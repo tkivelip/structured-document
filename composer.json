@@ -1,0 +1,53 @@
+{
+    "name": "laramate/structured-document",
+    "description": "Structured Documents for Laravel",
+    "license": "MIT",
+    "type": "package",
+    "authors": [
+        {
+            "name": "Laramate",
+            "email": "coding@laramate.de",
+            "homepage": "https://www.laramate.de/",
+            "role": "Team"
+        },
+        {
+            "name": "Tobi Kivelip",
+            "email": "tkivelip@gmail.com",
+            "homepage": "https://www.laramate.de/",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.1.3",
+        "illuminate/database": ">=5.7.0",
+        "illuminate/support": ">=5.7.0",
+        "laramate/facade-mapper": "1.1.2",
+        "tkivelip/laravel-flex-properties": "1.0.0",
+        "mindtwo/laravel-auto-create-uuid": "*",
+        "mindtwo/laravel-enumerable": "2.0.3",
+        "spatie/laravel-blade-x": "2.2.0"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.2",
+        "orchestra/testbench": "~3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Laramate\\StructuredDocument\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Laramate\\StructuredDocument\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Laramate\\StructuredDocument\\Providers\\DocumentServiceProvider"
+            ]
+        }
+    }
+}

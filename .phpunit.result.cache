@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":204:{a:2:{s:7:"defects";a:0:{}s:5:"times";a:2:{s:66:"Laramate\StructuredDocument\Tests\Feature\ExampleTest::testExample";d:0.17;s:63:"Laramate\StructuredDocument\Tests\Unit\ExampleTest::testExample";d:0.015;}}}
