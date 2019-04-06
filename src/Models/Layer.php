@@ -14,11 +14,14 @@ use Laramate\StructuredDocument\Models\Traits\Structurable;
 use LaravelFlexProperties\Traits\HasFlexProperties;
 use Mindtwo\DynamicMutators\Traits\HasDynamicMutators;
 use mindtwo\LaravelAutoCreateUuid\AutoCreateUuid;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Layer extends Model implements StructuredItemInterface, StructuredContainerInterface
+class Layer extends Model implements StructuredItemInterface, StructuredContainerInterface, HasMedia
 {
     use HasDynamicMutators,
         HasFlexProperties,
+        HasMediaTrait,
         AutoCreateUuid,
         Structurable,
         Containerable,

@@ -2,25 +2,28 @@
 
 namespace Laramate\StructuredDocument\Models;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Collection;
 use Laramate\StructuredDocument\Interfaces\StructuredContainerInterface;
 use Laramate\StructuredDocument\Interfaces\StructuredItemInterface;
 use Laramate\StructuredDocument\Models\Traits\Containerable;
 use Laramate\StructuredDocument\Models\Traits\HasBlocks;
 use Laramate\StructuredDocument\Models\Traits\HasLayers;
 use Laramate\StructuredDocument\Models\Traits\Structurable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Support\Collection;
 use LaravelFlexProperties\Traits\HasFlexProperties;
 use Mindtwo\DynamicMutators\Traits\HasDynamicMutators;
 use mindtwo\LaravelAutoCreateUuid\AutoCreateUuid;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Document extends Model implements StructuredItemInterface, StructuredContainerInterface
+class Document extends Model implements StructuredItemInterface, StructuredContainerInterface, HasMedia
 {
     use AutoCreateUuid,
         HasDynamicMutators,
         HasFlexProperties,
+        HasMediaTrait,
         Structurable,
         Containerable,
         HasBlocks,

@@ -2,20 +2,23 @@
 
 namespace Laramate\StructuredDocument\Models;
 
-use Laramate\StructuredDocument\Interfaces\StructuredItemInterface;
-use Laramate\StructuredDocument\Models\Traits\Structurable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laramate\StructuredDocument\Interfaces\StructuredItemInterface;
+use Laramate\StructuredDocument\Models\Traits\Structurable;
 use Laramate\Tag\Models\Traits\Taggable;
 use LaravelFlexProperties\Traits\HasFlexProperties;
 use Mindtwo\DynamicMutators\Traits\HasDynamicMutators;
 use mindtwo\LaravelAutoCreateUuid\AutoCreateUuid;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Block extends Model implements StructuredItemInterface
+class Block extends Model implements StructuredItemInterface, HasMedia
 {
     use HasDynamicMutators,
         HasFlexProperties,
+        HasMediaTrait,
         AutoCreateUuid,
         SoftDeletes,
         Structurable,
