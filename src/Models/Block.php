@@ -4,10 +4,10 @@ namespace Laramate\StructuredDocument\Models;
 
 use Laramate\StructuredDocument\Interfaces\StructuredItemInterface;
 use Laramate\StructuredDocument\Models\Traits\Structurable;
-use App\Domains\Tag\Models\Traits\Taggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laramate\Tag\Models\Traits\Taggable;
 use LaravelFlexProperties\Traits\HasFlexProperties;
 use Mindtwo\DynamicMutators\Traits\HasDynamicMutators;
 use mindtwo\LaravelAutoCreateUuid\AutoCreateUuid;

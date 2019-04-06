@@ -23,9 +23,10 @@
         "php": "^7.1.3",
         "illuminate/database": ">=5.7.0",
         "illuminate/support": ">=5.7.0",
-        "laramate/facade-mapper": "1.1.2",
-        "tkivelip/laravel-flex-properties": "1.0.0",
-        "mindtwo/laravel-auto-create-uuid": "*",
+        "laramate/facade-mapper": ">=1.1.2",
+        "laramate/tag": ">=0.1.1",
+        "tkivelip/laravel-flex-properties": ">=1.0.0",
+        "mindtwo/laravel-auto-create-uuid": ">=1.0",
         "mindtwo/laravel-enumerable": "2.0.3",
         "spatie/laravel-blade-x": "2.2.0"
     },
