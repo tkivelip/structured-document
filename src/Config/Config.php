@@ -50,8 +50,8 @@ return [
     'media_conversions' => [
         'teaser' => [
             'rectangle-lg' => [
-                'width'   => 400,
-                'height'  => 300,
+                'width'   => 500,
+                'height'  => 500,
                 'crop'    => 'crop-center',
                 'sharpen' => 0,
                 'format'  => 'png',
