@@ -51,7 +51,7 @@ return [
         'teaser' => [
             'rectangle-lg' => [
                 'width'   => 400,
-                'width'   => 300,
+                'height'  => 300,
                 'crop'    => 'crop-center',
                 'sharpen' => 0,
                 'format'  => 'png',

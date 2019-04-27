@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laramate\StructuredDocument\Interfaces\StructuredItemInterface;
+use Laramate\StructuredDocument\Models\Traits\HasMediaConversions;
 use Laramate\StructuredDocument\Models\Traits\Structurable;
 use Laramate\Tag\Models\Traits\Taggable;
 use LaravelFlexProperties\Traits\HasFlexProperties;
@@ -13,12 +14,14 @@ use Mindtwo\DynamicMutators\Traits\HasDynamicMutators;
 use mindtwo\LaravelAutoCreateUuid\AutoCreateUuid;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
+
 
 class Block extends Model implements StructuredItemInterface, HasMedia
 {
     use HasDynamicMutators,
         HasFlexProperties,
-        HasMediaTrait,
+        HasMediaConversions,
         AutoCreateUuid,
         SoftDeletes,
         Structurable,
@@ -54,6 +57,37 @@ class Block extends Model implements StructuredItemInterface, HasMedia
         'published_at',
         'deleted_at',
     ];
+
+    public function registerMediaCollections()
+    {
+        foreach (config('document.media_conversions') as $collection=>$conversions) {
+            $this->addMediaCollection($collection);
+        }
+    }
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        foreach (config('document.media_conversions') as $collection=>$conversions) {
+
+            foreach ($conversions as $conversionKey => $config) {
+                $conversion = $this->addMediaConversion($conversionKey);
+
+                if (isset($config['width'])) {
+                    $conversion->width($config['width']);
+                }
+
+                if (isset($config['height'])) {
+                    $conversion->width($config['height']);
+                }
+
+                if (isset($config['crop'])) {
+                    $conversion->crop($config['crop'], $config['width'], $config['height']);
+                }
+            }
+            $conversion->performOnCollections($collection);
+
+        }
+    }
 
     /**
      * Get the structured item type.

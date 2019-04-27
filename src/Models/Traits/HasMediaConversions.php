@@ -2,10 +2,13 @@
 
 namespace Laramate\StructuredDocument\Models\Traits;
 
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
 
 trait HasMediaConversions
 {
+    use HasMediaTrait;
+
     public function registerMediaCollections()
     {
         foreach (config('document.media_conversions') as $collection=>$conversions) {
@@ -17,8 +20,7 @@ trait HasMediaConversions
     {
         foreach (config('document.media_conversions') as $collection=>$conversions) {
             foreach ($conversions as $conversionKey => $config) {
-                $conversion = $this->addMediaConversion($conversionKey)
-                    ->performOnCollections($collection);
+                $conversion = $this->addMediaConversion($conversionKey);
 
                 if (isset($config['width'])) {
                     $conversion->width($config['width']);
@@ -32,6 +34,8 @@ trait HasMediaConversions
                     $conversion->crop($config['crop'], $config['width'], $config['height']);
                 }
             }
+            $conversion->performOnCollections($collection);
+
         }
     }
 }
