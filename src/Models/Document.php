@@ -12,7 +12,7 @@ use Laramate\StructuredDocument\Models\Traits\Containerable;
 use Laramate\StructuredDocument\Models\Traits\HasBlocks;
 use Laramate\StructuredDocument\Models\Traits\HasLayers;
 use Laramate\StructuredDocument\Models\Traits\Structurable;
-use LaravelFlexProperties\Traits\HasFlexProperties;
+use Laramate\FlexProperties\Traits\HasFlexProperties;
 use Mindtwo\DynamicMutators\Traits\HasDynamicMutators;
 use mindtwo\LaravelAutoCreateUuid\AutoCreateUuid;
 use Spatie\MediaLibrary\HasMedia\HasMedia;

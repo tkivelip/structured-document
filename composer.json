@@ -17,6 +17,12 @@
             "role": "Developer"
         }
     ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../*/*/"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
@@ -25,7 +31,7 @@
         "illuminate/support": ">=5.7.0",
         "laramate/facade-mapper": ">=1.1.2",
         "laramate/tag": ">=0.1.1",
-        "tkivelip/laravel-flex-properties": ">=1.0.0",
+        "laramate/flex-properties": ">=1.0.0",
         "mindtwo/laravel-auto-create-uuid": ">=1.0",
         "mindtwo/laravel-enumerable": "2.0.3",
         "spatie/laravel-blade-x": "2.2.0",
