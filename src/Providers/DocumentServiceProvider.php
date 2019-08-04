@@ -22,16 +22,13 @@ class DocumentServiceProvider extends ServiceProvider
             'block'    => Block::class,
         ]);
 
-        BladeX::component([
-            str_replace('/', '.', config('document.components.view_path').'/*'),
-        ]);
+        $this->bootBladeX();
 
         if ($this->app->runningInConsole()) {
             $this->registerPublishing();
             $this->loadMigrationsFrom(__DIR__ . '/../Migrations');
         }
     }
-
 
     /**
      * Register the application services.
@@ -41,6 +38,18 @@ class DocumentServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../Config/Config.php', 'document');
+    }
+    
+    /**
+     * Boot BladeX
+     */
+    protected function bootBladeX() {
+        $componentDir = str_replace('/', '.', config('document.components.view_path'));
+        if (is_dir($componentDir)) {
+            BladeX::component([
+                $componentDir .'/*'
+            ]);
+        }
     }
 
     /**
