@@ -16,12 +16,7 @@ class DocumentServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Relation::morphMap([
-            'document' => Document::class,
-            'layer'    => Layer::class,
-            'block'    => Block::class,
-        ]);
-
+        $this->createMorphMap();
         $this->bootBladeX();
 
         if ($this->app->runningInConsole()) {
@@ -32,8 +27,6 @@ class DocumentServiceProvider extends ServiceProvider
 
     /**
      * Register the application services.
-     *
-     * @return void
      */
     public function register()
     {
@@ -43,19 +36,29 @@ class DocumentServiceProvider extends ServiceProvider
     /**
      * Boot BladeX
      */
-    protected function bootBladeX() {
+    protected function bootBladeX() 
+    {
         $componentDir = str_replace('/', '.', config('document.components.view_path'));
+        
         if (is_dir($componentDir)) {
-            BladeX::component([
-                $componentDir .'/*'
-            ]);
+            BladeX::component([$componentDir .'/*']);
         }
+    }
+    
+    /**
+     * Create morph maps for the structured document models
+     */
+    protected function createMorphMap() 
+    {
+        Relation::morphMap([
+            'document' => Document::class,
+            'layer'    => Layer::class,
+            'block'    => Block::class,
+        ]);
     }
 
     /**
      * Register the package's publishable resources.
-     *
-     * @return void
      */
     protected function registerPublishing()
     {
