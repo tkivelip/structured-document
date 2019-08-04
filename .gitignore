@@ -3,6 +3,4 @@ vendor/
 composer.lock
 .php_cs.cache
 .project
-/nbproject/private/
-nbproject/project.properties
-nbproject/project.xml
+nbproject/
