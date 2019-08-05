@@ -1,0 +1,1 @@
+<a class="{{ $class ?? '' }}" href="{{ $document->url }}">{{ $document->title }}</a>

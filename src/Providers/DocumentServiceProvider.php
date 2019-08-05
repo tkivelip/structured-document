@@ -38,11 +38,12 @@ class DocumentServiceProvider extends ServiceProvider
      */
     protected function bootBladeX() 
     {
-        $componentDir = str_replace('/', '.', config('document.components.view_path'));
-        
-        if (is_dir($componentDir)) {
-            BladeX::component([$componentDir .'/*']);
-        }
+        BladeX::component([
+            'lsd::block.*',
+            'lsd::layer.*',
+            'lsd::navigation.*',
+            'lsd::render.*',
+        ]);
     }
     
     /**
@@ -70,5 +71,10 @@ class DocumentServiceProvider extends ServiceProvider
             [__DIR__ . '/../Migrations' => database_path('migrations')],
             'laramate-structured-document-migrations'
         );
+    }
+    
+    protected function registerViews() 
+    {
+        $this->loadViewsFrom(__DIR__.'/../Views', 'lsd');
     }
 }
