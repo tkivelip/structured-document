@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Laramate\StructuredDocument\Interfaces\StructuredItemInterface;
 use Laramate\StructuredDocument\Models\Traits\HasMediaConversions;
 use Laramate\StructuredDocument\Models\Traits\Structurable;
+use Laramate\StructuredDocument\Models\Traits\ModelArrayAccess;
 use Laramate\Tag\Models\Traits\Taggable;
 use Laramate\FlexProperties\Traits\HasFlexProperties;
 use Mindtwo\DynamicMutators\Traits\HasDynamicMutators;
@@ -17,10 +18,12 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
 
 
-class Block extends Model implements StructuredItemInterface, HasMedia
+class Block extends Model implements StructuredItemInterface, HasMedia, \ArrayAccess
 {
     use HasDynamicMutators,
         HasFlexProperties,
+        ModelArrayAccess,
+        HasMediaTrait,
         HasMediaConversions,
         AutoCreateUuid,
         SoftDeletes,
