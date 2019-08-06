@@ -31,6 +31,7 @@ class DocumentServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../Config/Config.php', 'document');
+        $this->registerViews();
     }
     
     /**
