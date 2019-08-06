@@ -16,7 +16,8 @@ class DocumentServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->createMorphMap();
+        $this->bootMorphMap();
+        $this->bootViews();
         $this->bootBladeX();
 
         if ($this->app->runningInConsole()) {
@@ -31,26 +32,12 @@ class DocumentServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../Config/Config.php', 'document');
-        $this->registerViews();
     }
-    
-    /**
-     * Boot BladeX
-     */
-    protected function bootBladeX() 
-    {
-        BladeX::component([
-            'lsd::block.*',
-            'lsd::layer.*',
-            'lsd::navigation.*',
-            'lsd::render.*',
-        ]);
-    }
-    
+        
     /**
      * Create morph maps for the structured document models
      */
-    protected function createMorphMap() 
+    protected function bootMorphMap() 
     {
         Relation::morphMap([
             'document' => Document::class,
@@ -74,8 +61,21 @@ class DocumentServiceProvider extends ServiceProvider
         );
     }
     
-    protected function registerViews() 
+    protected function bootViews() 
     {
         $this->loadViewsFrom(__DIR__.'/../Views', 'lsd');
+    }
+    
+    /**
+     * Boot BladeX
+     */
+    protected function bootBladeX() 
+    {
+        BladeX::component([
+            'lsd::block.*',
+            'lsd::layer.*',
+            'lsd::navigation.*',
+            'lsd::render.*',
+        ]);
     }
 }
