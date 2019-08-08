@@ -2,7 +2,7 @@
 
 namespace Laramate\StructuredDocument\Models\Traits;
 
-use Laramate\StructuredDocument\Interfaces\StructuredContainerInterface;
+use Laramate\StructuredDocument\Interfaces\StructuralContainer;
 use Illuminate\Support\Str;
 
 trait Structurable
@@ -14,7 +14,7 @@ trait Structurable
      */
     public function isContainer(): bool
     {
-        return $this instanceof StructuredContainerInterface;
+        return $this instanceof StructuralContainer;
     }
 
     /**

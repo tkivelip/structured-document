@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
-use Laramate\StructuredDocument\Interfaces\StructuredContainerInterface;
-use Laramate\StructuredDocument\Interfaces\StructuredItemInterface;
+use Laramate\StructuredDocument\Interfaces\StructuralContainer;
+use Laramate\StructuredDocument\Interfaces\StructuralItem;
 use Laramate\StructuredDocument\Models\Traits\Containerable;
 use Laramate\StructuredDocument\Models\Traits\HasBlocks;
 use Laramate\StructuredDocument\Models\Traits\HasLayers;
@@ -18,7 +18,7 @@ use mindtwo\LaravelAutoCreateUuid\AutoCreateUuid;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Document extends Model implements StructuredItemInterface, StructuredContainerInterface, HasMedia
+class Document extends Model implements StructuralItem, StructuralContainer, HasMedia
 {
     use AutoCreateUuid,
         HasDynamicMutators,

@@ -5,8 +5,8 @@ namespace Laramate\StructuredDocument\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Collection;
-use Laramate\StructuredDocument\Interfaces\StructuredContainerInterface;
-use Laramate\StructuredDocument\Interfaces\StructuredItemInterface;
+use Laramate\StructuredDocument\Interfaces\StructuralContainer;
+use Laramate\StructuredDocument\Interfaces\StructuralItem;
 use Laramate\StructuredDocument\Models\Traits\Containerable;
 use Laramate\StructuredDocument\Models\Traits\HasBlocks;
 use Laramate\StructuredDocument\Models\Traits\HasLayers;
@@ -17,7 +17,7 @@ use mindtwo\LaravelAutoCreateUuid\AutoCreateUuid;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Layer extends Model implements StructuredItemInterface, StructuredContainerInterface, HasMedia
+class Layer extends Model implements StructuralItem, StructuralContainer, HasMedia
 {
     use HasDynamicMutators,
         HasFlexProperties,

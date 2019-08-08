@@ -4,7 +4,7 @@ namespace Laramate\StructuredDocument\Interfaces;
 
 use Illuminate\Support\Collection;
 
-interface StructuredContainerInterface
+interface StructuralContainer
 {
     /**
      * Get all child items.

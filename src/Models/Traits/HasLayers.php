@@ -2,7 +2,7 @@
 
 namespace Laramate\StructuredDocument\Models\Traits;
 
-use Laramate\StructuredDocument\Interfaces\StructuredContainerInterface;
+use Laramate\StructuredDocument\Interfaces\StructuralContainer;
 use Laramate\StructuredDocument\Models\Layer;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
@@ -36,9 +36,9 @@ trait HasLayers
      *
      * @param string $name
      *
-     * @return StructuredContainerInterface|null
+     * @return StructuralContainer|null
      */
-    public function getLayer(string $name): ?StructuredContainerInterface
+    public function getLayer(string $name): ?StructuralContainer
     {
         return $this->layers->where('name', $name)->first();
     }

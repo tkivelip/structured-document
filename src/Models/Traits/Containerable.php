@@ -2,7 +2,7 @@
 
 namespace Laramate\StructuredDocument\Models\Traits;
 
-use Laramate\StructuredDocument\Interfaces\StructuredItemInterface;
+use Laramate\StructuredDocument\Interfaces\StructuralItem;
 
 trait Containerable
 {
@@ -11,9 +11,9 @@ trait Containerable
      *
      * @param string $name
      *
-     * @return StructuredItemInterface|null
+     * @return StructuralItem|null
      */
-    public function getChild(string $name): ?StructuredItemInterface
+    public function getChild(string $name): ?StructuralItem
     {
         return $this->getChildren()->where('name', $name)->first();
     }

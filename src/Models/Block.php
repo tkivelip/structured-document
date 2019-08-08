@@ -5,7 +5,7 @@ namespace Laramate\StructuredDocument\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Laramate\StructuredDocument\Interfaces\StructuredItemInterface;
+use Laramate\StructuredDocument\Interfaces\StructuralItem;
 use Laramate\StructuredDocument\Models\Traits\HasMediaConversions;
 use Laramate\StructuredDocument\Models\Traits\Structurable;
 use Laramate\StructuredDocument\Models\Traits\ModelArrayAccess;
@@ -18,7 +18,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
 
 
-class Block extends Model implements StructuredItemInterface, HasMedia, \ArrayAccess
+class Block extends Model implements StructuralItem, HasMedia, \ArrayAccess
 {
     use HasDynamicMutators,
         HasFlexProperties,

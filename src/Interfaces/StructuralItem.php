@@ -2,7 +2,7 @@
 
 namespace Laramate\StructuredDocument\Interfaces;
 
-interface StructuredItemInterface
+interface StructuralItem
 {
     /**
      * Get the structured item type.
