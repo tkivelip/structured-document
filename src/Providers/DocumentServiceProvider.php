@@ -5,9 +5,9 @@ namespace Laramate\StructuredDocument\Providers;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Laramate\StructuredDocument\Helpers\Lsd;
-use Laramate\StructuredDocument\Interfaces\StructuralItem;
 use Laramate\StructuredDocument\Models\Block;
 use Laramate\StructuredDocument\Models\Document;
 use Laramate\StructuredDocument\Models\Layer;
@@ -23,11 +23,7 @@ class DocumentServiceProvider extends ServiceProvider
         $this->bootMorphMap();
         $this->bootViews();
         $this->bootBladeX();
-
-        if ($this->app->runningInConsole()) {
-            $this->registerPublishing();
-            $this->loadMigrationsFrom(__DIR__ . '/../Migrations');
-        }
+        $this->bootConsole();
     }
 
     /**
@@ -35,15 +31,24 @@ class DocumentServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../Config/Config.php', 'document');
+        $this->registerAliases();
+        $this->registerConfig();
+    }
 
+    protected function registerConfig()
+    {
+        $this->mergeConfigFrom(__DIR__.'/../Config/Config.php', 'document');
+    }
+
+    public function registerAliases()
+    {
         AliasLoader::getInstance()->alias('Lsd', Lsd::class);
     }
-        
+
     /**
-     * Create morph maps for the structured document models
+     * Create morph maps for the structured document models.
      */
-    protected function bootMorphMap() 
+    protected function bootMorphMap()
     {
         Relation::morphMap([
             'document' => Document::class,
@@ -58,38 +63,43 @@ class DocumentServiceProvider extends ServiceProvider
     protected function registerPublishing()
     {
         $this->publishes([
-            __DIR__ . '/../Config/Config.php' => config_path('document.php'),
+            __DIR__.'/../Config/Config.php' => config_path('document.php'),
         ], 'laramate-structured-document-config');
 
         $this->publishes(
-            [__DIR__ . '/../Migrations' => database_path('migrations')],
+            [__DIR__.'/../Migrations' => database_path('migrations')],
             'laramate-structured-document-migrations'
         );
     }
-    
-    protected function bootViews() 
+
+    protected function bootViews()
     {
-        $this->loadViewsFrom(__DIR__.'/../Views', 'lsd');
+        $framework = Config::get('document.view_framework');
+        $this->loadViewsFrom(__DIR__.'/../Views/'.$framework, 'lsd');
 
         Blade::directive('extract', function ($expression) {
             return "<?php extract($expression); ?>";
         });
     }
-    
-    /**
-     * Boot BladeX
-     */
-    protected function bootBladeX() 
-    {
-        //BladeX::prefix('x');
 
+    /**
+     * Boot BladeX.
+     */
+    protected function bootBladeX()
+    {
         BladeX::component([
             'lsd::block.*',
             'lsd::layer.*',
             'lsd::navigation.*',
             'lsd::render.*',
         ]);
+    }
 
-
+    protected function bootConsole()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->registerPublishing();
+            $this->loadMigrationsFrom(__DIR__.'/../Migrations');
+        }
     }
 }

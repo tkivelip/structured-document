@@ -18,24 +18,12 @@ trait Structurable
     }
 
     /**
-     * Get the template base key.
-     *
-     * @return string
-     */
-    protected function getTemplateBaseKey(): string
-    {
-        $path = trim(config('document.'.Str::plural($this->getType()).'.view_path'), '/');
-
-        return str_replace('/', '.', $path);
-    }
-
-    /**
      * Get the template key.
      *
      * @return string
      */
     public function getTemplateKey(): string
     {
-        return $this->getTemplateBaseKey().'.'.$this->template;
+        return 'lsd::block.block';
     }
 }
