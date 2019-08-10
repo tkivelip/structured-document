@@ -12,7 +12,7 @@ use Laramate\StructuredDocument\Models\Traits\ModelArrayAccess;
 use Laramate\Tag\Models\Traits\Taggable;
 use Laramate\FlexProperties\Traits\HasFlexProperties;
 use Mindtwo\DynamicMutators\Traits\HasDynamicMutators;
-use Mindtwo\LaravelAutoCreateUuid\AutoCreateUuid;
+use mindtwo\LaravelAutoCreateUuid\AutoCreateUuid;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
