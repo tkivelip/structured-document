@@ -3,10 +3,13 @@
 namespace Laramate\StructuredDocument\Models;
 
 use Laramate\StructuredDocument\Abstracts\Item;
+use Laramate\StructuredDocument\Models\Traits\HasMediaConversions;
 use Spatie\MediaLibrary\Models\Media;
 
 class Block extends Item
 {
+    use HasMediaConversions;
+
     /**
      * Flex properties.
      *

@@ -23,6 +23,7 @@ class CreateDocumentsTable extends Migration
             $table->tinyInteger('status')->default(DocumentStatus::Active);
             $table->integer('order')->default(0);
             $table->json('config')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

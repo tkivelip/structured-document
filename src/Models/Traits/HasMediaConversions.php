@@ -7,8 +7,6 @@ use Spatie\MediaLibrary\Models\Media;
 
 trait HasMediaConversions
 {
-    use HasMediaTrait;
-
     public function registerMediaCollections()
     {
         foreach (config('document.media_conversions') as $collection=>$conversions) {

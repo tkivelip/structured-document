@@ -2,7 +2,8 @@
 
 namespace Laramate\StructuredDocument\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
@@ -33,6 +34,7 @@ class Document extends Item implements StructuralContainer
         'title',
         'meta_title',
         'meta_keywords',
+        'parent_id',
     ];
 
     protected $config = [
@@ -103,13 +105,13 @@ class Document extends Item implements StructuralContainer
     }
 
     /**
-     * Child documents.
+     * Parent document.
      *
-     * @return HasMany
+     * @return HasOne
      */
     public function children(): HasMany
     {
-        return $this->hasMany(static::class, 'parent_id', 'id');
+        return $this->hasMany(static::class,  'parent_id', 'id');
     }
 
     /**
