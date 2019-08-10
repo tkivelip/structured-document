@@ -2,13 +2,11 @@
 
 namespace Laramate\StructuredDocument\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
-use Laramate\StructuredDocument\Abstracts\Item;
 use Laramate\StructuredDocument\Interfaces\StructuralContainer;
+use Laramate\StructuredDocument\Models\Abstracts\Item;
 use Laramate\StructuredDocument\Models\Traits\Containerable;
 use Laramate\StructuredDocument\Models\Traits\HasBlocks;
 use Laramate\StructuredDocument\Models\Traits\HasLayers;
@@ -113,7 +111,7 @@ class Document extends Item implements StructuralContainer
      */
     public function children(): HasMany
     {
-        return $this->hasMany(static::class,  'parent_id', 'id');
+        return $this->hasMany(static::class, 'parent_id', 'id');
     }
 
     /**

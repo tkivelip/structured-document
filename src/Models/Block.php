@@ -2,7 +2,7 @@
 
 namespace Laramate\StructuredDocument\Models;
 
-use Laramate\StructuredDocument\Abstracts\Item;
+use Laramate\StructuredDocument\Models\Abstracts\Item;
 use Laramate\StructuredDocument\Models\Traits\HasMediaConversions;
 use Spatie\MediaLibrary\Models\Media;
 

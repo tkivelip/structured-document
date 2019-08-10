@@ -3,8 +3,8 @@
 namespace Laramate\StructuredDocument\Models;
 
 use Illuminate\Support\Collection;
-use Laramate\StructuredDocument\Abstracts\Item;
 use Laramate\StructuredDocument\Interfaces\StructuralContainer;
+use Laramate\StructuredDocument\Models\Abstracts\Item;
 use Laramate\StructuredDocument\Models\Traits\Containerable;
 use Laramate\StructuredDocument\Models\Traits\HasBlocks;
 use Laramate\StructuredDocument\Models\Traits\HasLayers;
