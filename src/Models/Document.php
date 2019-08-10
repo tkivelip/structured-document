@@ -6,28 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
+use Laramate\StructuredDocument\Abstracts\Item;
 use Laramate\StructuredDocument\Interfaces\StructuralContainer;
-use Laramate\StructuredDocument\Interfaces\StructuralItem;
 use Laramate\StructuredDocument\Models\Traits\Containerable;
 use Laramate\StructuredDocument\Models\Traits\HasBlocks;
 use Laramate\StructuredDocument\Models\Traits\HasLayers;
-use Laramate\StructuredDocument\Models\Traits\Structurable;
-use Laramate\FlexProperties\Traits\HasFlexProperties;
-use Mindtwo\DynamicMutators\Traits\HasDynamicMutators;
-use mindtwo\LaravelAutoCreateUuid\AutoCreateUuid;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Document extends Model implements StructuralItem, StructuralContainer, HasMedia
+class Document extends Item implements StructuralContainer
 {
-    use AutoCreateUuid,
-        HasDynamicMutators,
-        HasFlexProperties,
-        HasMediaTrait,
-        Structurable,
-        Containerable,
-        HasBlocks,
-        HasLayers;
+    use Containerable;
+    use HasBlocks;
+    use HasLayers;
 
     /**
      * Flex properties.
@@ -67,16 +56,6 @@ class Document extends Model implements StructuralItem, StructuralContainer, Has
             $document->createMissingLayers();
             $document->createMissingBlocks();
         });
-    }
-
-    /**
-     * Get the structured item type.
-     *
-     * @return string
-     */
-    public function getType(): string
-    {
-        return 'document';
     }
 
     /**

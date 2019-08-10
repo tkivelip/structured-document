@@ -9,14 +9,7 @@ interface StructuralItem
      *
      * @return string
      */
-    public function getType(): string;
-
-    /**
-     * Get the template key.
-     *
-     * @return string
-     */
-    public function getTemplateKey(): string;
+    public function getStructuralTypeAttribute(): string;
 
     /**
      * Determinate if the item can have child items.
