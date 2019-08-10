@@ -30,11 +30,13 @@ class Document extends Item implements StructuralContainer
         'meta_keywords' => 'text',
     ];
 
-    protected $fillable = [
-        'title',
-        'meta_title',
-        'meta_keywords',
-        'parent_id',
+    /**
+     * Guarded attributes.
+     *
+     * @var array
+     */
+    protected $guarded = [
+        'id',
     ];
 
     protected $config = [
