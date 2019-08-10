@@ -2,10 +2,10 @@
 
 namespace Laramate\StructuredDocument\Tests\Unit;
 
-use Laramate\StructuredDocument\Models\Block;
+use Laramate\StructuredDocument\Models\Layer;
 use Laramate\StructuredDocument\Tests\TestCase;
 
-class BlockTest extends TestCase
+class LayerTest extends TestCase
 {
     /**
      * Setup the test environment.
@@ -23,15 +23,13 @@ class BlockTest extends TestCase
      *
      * @test
      */
-    public function testCreateBlock()
+    public function testCreateDocument()
     {
-        $block = Block::create([
+        $layer = Layer::create([
             'title'   => 'Example title',
-            'content' => 'Example content',
         ]);
 
-        $this->assertEquals('Example title', $block->title);
-        $this->assertEquals('Example content', $block->content);
-        $this->assertEquals('block', $block->structural_type);
+        $this->assertEquals('Example title', $layer->title);
+        $this->assertEquals('layer', $layer->structural_type);
     }
 }
