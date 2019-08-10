@@ -2,31 +2,18 @@
 
 namespace Laramate\StructuredDocument\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Collection;
+use Laramate\StructuredDocument\Abstracts\Item;
 use Laramate\StructuredDocument\Interfaces\StructuralContainer;
-use Laramate\StructuredDocument\Interfaces\StructuralItem;
 use Laramate\StructuredDocument\Models\Traits\Containerable;
 use Laramate\StructuredDocument\Models\Traits\HasBlocks;
 use Laramate\StructuredDocument\Models\Traits\HasLayers;
-use Laramate\StructuredDocument\Models\Traits\Structurable;
-use Laramate\FlexProperties\Traits\HasFlexProperties;
-use Mindtwo\DynamicMutators\Traits\HasDynamicMutators;
-use mindtwo\LaravelAutoCreateUuid\AutoCreateUuid;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Layer extends Model implements StructuralItem, StructuralContainer, HasMedia
+class Layer extends Item implements StructuralContainer
 {
-    use HasDynamicMutators,
-        HasFlexProperties,
-        HasMediaTrait,
-        AutoCreateUuid,
-        Structurable,
-        Containerable,
-        HasBlocks,
-        HasLayers;
+    use Containerable;
+    use HasBlocks;
+    use HasLayers;
 
     /**
      * Flex properties.
@@ -45,26 +32,6 @@ class Layer extends Model implements StructuralItem, StructuralContainer, HasMed
     protected $guarded = [
         'id',
     ];
-
-    /**
-     * Get the structured item type.
-     *
-     * @return string
-     */
-    public function getType(): string
-    {
-        return 'layer';
-    }
-
-    /**
-     * Related structured item.
-     *
-     * @return MorphTo
-     */
-    public function linkable(): MorphTo
-    {
-        return $this->morphTo();
-    }
 
     /**
      * Get all child items.
