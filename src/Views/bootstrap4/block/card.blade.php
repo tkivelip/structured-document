@@ -1,17 +1,18 @@
-<div class="card{{ !empty($class) ? ' '.$class : ''}}">
-    @if($header ?? false)
+<div class="card{{ isset($class) ? ' '.$class : ''}}">
+    @if($item->header)
         <div class="card-header">
-            {{ $header }}
+            {{ $item->header }}
         </div>
     @endif
     <div class="card-body">
-        @if(!empty((string) ($slot ?? '')))
-            {{ $slot }}
-        @elseif($content ?? false)
-            {{ $content }}
+        @if($item->content)
+            {{ $item->content }}
         @else
-            <h5 class="card-title">{{ $title ?? '' }}</h5>
-            <p class="card-text"> {{ $text ?? ''}}</p>
+            <h5 class="card-title">{{ $item->title }}</h5>
+            <p class="card-text"> {{ $item->text }}</p>
+            @if($item->link)
+                <p class="card-link"><a href="{{ $item->link }}">{{ $item->link_text }}</a> </p>
+            @endif
         @endif
     </div>
 </div>

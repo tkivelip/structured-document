@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Laramate\StructuredDocument\Facades\Lsd;
+use Laramate\StructuredDocument\Models\Blade\RenderViewModel;
 use Laramate\StructuredDocument\Models\Block;
 use Laramate\StructuredDocument\Models\Document;
 use Laramate\StructuredDocument\Models\Layer;
@@ -93,6 +94,8 @@ class DocumentServiceProvider extends ServiceProvider
             'lsd::navigation.*',
             'lsd::render.*',
         ]);
+
+        BladeX::component('lsd::render.render', 'lsd::render')->viewModel(RenderViewModel::class);
     }
 
     protected function bootConsole()

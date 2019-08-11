@@ -29,6 +29,16 @@ class Document extends Item implements StructuralContainer
     ];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'title',
+        'template',
+    ];
+
+    /**
      * Guarded attributes.
      *
      * @var array
@@ -53,11 +63,6 @@ class Document extends Item implements StructuralContainer
     protected static function boot()
     {
         parent::boot();
-
-        static::saved(function ($document) {
-            $document->createMissingLayers();
-            $document->createMissingBlocks();
-        });
     }
 
     /**
@@ -132,5 +137,10 @@ class Document extends Item implements StructuralContainer
     public function getDeepthAttribute()
     {
         return $this->parent_id ? $this->parent->deepth + 1 : 0;
+    }
+
+    public function layer($itemType)
+    {
+        return $this->getLayers()->where('item_type', $itemType)->first();
     }
 }

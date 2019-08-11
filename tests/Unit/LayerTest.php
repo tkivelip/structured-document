@@ -57,6 +57,6 @@ class LayerTest extends TestCase
 
         $rendered = $layer->render();
 
-        dd($rendered);
+        $this->assertEquals('Layer container', $layer->title);
     }
 }

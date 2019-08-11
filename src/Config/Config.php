@@ -9,24 +9,25 @@ return [
     */
     'view_framework' => 'bootstrap4',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Components
-    |--------------------------------------------------------------------------
-    |
-    */
-    'components' => [
-        'view_path' => 'document/components',
-    ],
-
-    /*
+   /*
    |--------------------------------------------------------------------------
    | Documents
    |--------------------------------------------------------------------------
    |
    */
-    'documents' => [
-        'view_path' => 'document',
+    'document' => [
+        'items' => [
+            [
+                'name'     => 'default',
+                'template' => 'lsd::document.document',
+                'properties' => [
+                    [
+                        'name' => 'title',
+                        'type' => 'string',
+                    ],
+                ],
+            ],
+        ],
     ],
 
     /*
@@ -47,7 +48,37 @@ return [
                     ],
                 ],
             ],
+            [
+                'name'     => 'main',
+                'template' => 'lsd::layer.main',
+                'properties' => [],
+            ],
+            [
+                'name'     => 'jumbotron',
+                'template' => 'lsd::layer.jumbotron',
+                'properties' => [],
+            ],
+            [
+                'name'     => 'teaser',
+                'template' => 'lsd::layer.teaser',
+                'properties' => [],
+                'repeater' => [
+                    'max_items' => 3,
+                    'item' =>[
+                        [
+                            'name' => 'card',
+                            'type' => 'blog',
+                        ]
+                    ]
+                ],
+            ],
+            [
+                'name'     => 'footer',
+                'template' => 'lsd::layer.footer',
+                'properties' => [],
+            ],
         ],
+
     ],
 
     /*

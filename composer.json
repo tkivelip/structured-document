@@ -21,10 +21,12 @@
     "prefer-stable": true,
     "require": {
         "php": "^7.1.3",
-        "laravel/laravel": "^5.8",
+        "illuminate/support": "^5.8",
+        "illuminate/database": "^5.8",
         "laramate/facade-mapper": "dev-master",
         "laramate/flex-properties": "dev-master",
         "laramate/nucid-job": "dev-master",
+        "laramate/nucid-operation": "dev-master",
         "mindtwo/laravel-auto-create-uuid": "^1.0",
         "spatie/laravel-blade-x": "^2.2",
         "spatie/laravel-medialibrary": "^7.6"

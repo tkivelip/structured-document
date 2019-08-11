@@ -16,6 +16,7 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('relation_id')->nullable();
+            $table->string('item_type', 30)->nullable();
             $table->string('uuid', 36);
             $table->string('locale', 10)->nullable();
             $table->string('slug')->nullable();

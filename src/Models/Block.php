@@ -15,8 +15,12 @@ class Block extends Item
      * @var array
      */
     public $flex_properties = [
-        'title'   => 'string',
-        'content' => 'text',
+        'title'     => 'string',
+        'content'   => 'text',
+        'header'    => 'string',
+        'text'      => 'text',
+        'link'      => 'string',
+        'link_text' => 'string',
     ];
 
     /**
