@@ -35,8 +35,19 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'layers' => [
-        'view_path' => 'document/layer',
+    'layer' => [
+        'items' => [
+            [
+                'name'     => 'container',
+                'template' => 'lsd::layer.container',
+                'properties' => [
+                    [
+                        'name' => 'title',
+                        'type' => 'string',
+                    ],
+                ],
+            ],
+        ],
     ],
 
     /*

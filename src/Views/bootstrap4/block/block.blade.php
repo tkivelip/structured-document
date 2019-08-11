@@ -2,5 +2,9 @@
     @if($title ?? false)
         <h{{  $heading_order ?? '2' }}>{{ $title }}</h{{  $heading_order ?? '2' }}>
     @endif
-    {{ $slot ?? $content ?? ''}}
+    @if(!empty((string) ($slot ?? '')))
+        {{ $slot }}
+    @else
+        {{ $content ?? ''}}
+    @endif
 </div>

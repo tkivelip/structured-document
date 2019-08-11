@@ -25,11 +25,38 @@ class LayerTest extends TestCase
      */
     public function testCreateDocument()
     {
-        $layer = Layer::create([
+        Layer::create([
             'title'   => 'Example title',
         ]);
 
+        $layer = Layer::first();
+
         $this->assertEquals('Example title', $layer->title);
         $this->assertEquals('layer', $layer->structural_type);
+    }
+
+    public function testRenderLayerWithBlocks()
+    {
+        $layer = Layer::create([
+            'title'     => 'Layer container',
+            'item_type' => 'container',
+        ]);
+
+        $layer->blocks()->create([
+            'title' => 'Card 1',
+            'content' => 'This is a card example',
+            'item_type' => 'card',
+        ]);
+
+        $layer->blocks()->create([
+            'title' => 'Card 2',
+            'content' => 'This is a card example',
+        ]);
+
+        $layer->save();
+
+        $rendered = $layer->render();
+
+        dd($rendered);
     }
 }

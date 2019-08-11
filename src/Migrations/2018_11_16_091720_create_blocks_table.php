@@ -17,6 +17,7 @@ class CreateBlocksTable extends Migration
             $table->increments('id');
             $table->string('uuid', 36);
             $table->nullableMorphs('linkable');
+            $table->string('item_type', 10)->nullable();
             $table->string('locale', 10)->nullable();
             $table->string('name', 0)->nullable();
             $table->string('type', 10)->nullable();

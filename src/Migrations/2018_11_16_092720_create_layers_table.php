@@ -14,6 +14,8 @@ class CreateLayersTable extends Migration
         Schema::create('layers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('uuid', 36);
+            $table->string('item_type', 10)->nullable();
+
             $table->string('name', 70)->nullable();
             $table->nullableMorphs('linkable');
             $table->string('locale', 10)->nullable();

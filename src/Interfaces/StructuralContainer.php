@@ -11,5 +11,5 @@ interface StructuralContainer
      *
      * @return Collection
      */
-    public function getChildren(): Collection;
+   // public function getChildrenAttribute(): Collection;
 }

@@ -2,7 +2,7 @@
 
 namespace Laramate\StructuredDocument\Facades;
 
-use Laramate\FacadeMapper\Facades\Facade;
+use Illuminate\Support\Facades\Facade;
 use Laramate\StructuredDocument\Models\Helpers\LsdHelper;
 
 class Lsd extends Facade

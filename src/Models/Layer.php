@@ -25,6 +25,17 @@ class Layer extends Item implements StructuralContainer
     ];
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'title',
+        'template',
+        'children',
+    ];
+
+    /**
      * Guarded attributes.
      *
      * @var array
@@ -38,7 +49,7 @@ class Layer extends Item implements StructuralContainer
      *
      * @return Collection
      */
-    public function getChildren(): Collection
+    public function getChildrenAttribute(): Collection
     {
         return collect($this->blocks)->merge($this->layers);
     }
