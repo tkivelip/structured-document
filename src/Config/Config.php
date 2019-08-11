@@ -66,6 +66,24 @@ return [
                 ],
             ],
         ],
+        [
+            'name'     => 'alert',
+            'template' => 'lsd::block.alert',
+            'properties' => [
+                [
+                    'name' => 'header',
+                    'type' => 'string',
+                ],
+                [
+                    'name' => 'content',
+                    'type' => 'text',
+                ],
+                [
+                    'name' => 'alert_type',
+                    'type' => 'string',
+                ],
+            ],
+        ],
     ],
 
      /*

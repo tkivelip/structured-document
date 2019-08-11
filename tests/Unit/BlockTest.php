@@ -80,13 +80,13 @@ class BlockTest extends TestCase
     {
         $block = Block::make([
             'content' => 'Example content',
-            'type'    => 'card',
+            'item_type'    => 'card',
         ]);
 
         $renderedBlock = $block->render();
 
         $this->assertEquals('lsd::block.card', $block->template);
-        $this->assertEquals('card', $block->type);
+        $this->assertEquals('card', $block->item_type);
         $this->assertStringContainsString('class="card', $renderedBlock);
         $this->assertStringContainsString('Example content', $renderedBlock);
     }

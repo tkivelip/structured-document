@@ -61,19 +61,19 @@ abstract class Item extends Model implements StructuralItem, HasMedia
     /**
      * Set item type.
      *
-     * @param string $type
+     * @param string $itemType
      *
      * @throws StructuredDocumentException
      *
      * @return Item
      */
-    public function setTypeAttribute(string $type): self
+    public function setItemTypeAttribute(string $itemType): self
     {
-        if (!empty($this->attributes['type'])) {
+        if (!empty($this->attributes['item_type'])) {
             throw new StructuredDocumentException('Type change after initialization is not allowed.');
         }
 
-        $this->attributes['type'] = $type;
+        $this->attributes['item_type'] = $itemType;
 
         return $this;
     }
@@ -85,7 +85,7 @@ abstract class Item extends Model implements StructuralItem, HasMedia
      *
      * @return string
      */
-    public function getTypeAttribute($value = null): string
+    public function getItemTypeAttribute($value = null): string
     {
         return $value ?? $this->structural_type;
     }
@@ -101,7 +101,7 @@ abstract class Item extends Model implements StructuralItem, HasMedia
     public function structuralConfig($key, $default = null)
     {
         if (empty($this->structural_config)) {
-            $this->structural_config = $this->composeStructuralConfig($this->type, $this->structural_type);
+            $this->structural_config = $this->composeStructuralConfig($this->item_type, $this->structural_type);
         }
 
         return Arr::get($this->structural_config, $key, $default);
@@ -110,16 +110,16 @@ abstract class Item extends Model implements StructuralItem, HasMedia
     /**
      * Compose item config.
      *
-     * @param string $type
+     * @param string $itemType
      * @param string $structuralType
      *
      * @return array|null
      */
-    protected function composeStructuralConfig(string $type, string $structuralType): ?array
+    protected function composeStructuralConfig(string $itemType, string $structuralType): ?array
     {
         $config = Config::get("lsd.{$structuralType}.items");
 
-        return collect($config)->keyBy('name')->get($type);
+        return collect($config)->keyBy('name')->get($itemType);
     }
 
     /**
