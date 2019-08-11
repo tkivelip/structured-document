@@ -26,12 +26,10 @@
         "laramate/flex-properties": "dev-master",
         "laramate/nucid-job": "dev-master",
         "mindtwo/laravel-auto-create-uuid": "^1.0",
-        "mindtwo/laravel-enumerable": "^2.0",
         "spatie/laravel-blade-x": "^2.2",
         "spatie/laravel-medialibrary": "^7.6"
     },
     "require-dev": {
-        "symfony/var-dumper": "^4.2",
         "phpunit/phpunit": "^8.0",
         "orchestra/testbench": "~3.0"
     },

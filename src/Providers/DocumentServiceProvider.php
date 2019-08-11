@@ -7,7 +7,7 @@ use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
-use Laramate\StructuredDocument\Helpers\Lsd;
+use Laramate\StructuredDocument\Facades\Lsd;
 use Laramate\StructuredDocument\Models\Block;
 use Laramate\StructuredDocument\Models\Document;
 use Laramate\StructuredDocument\Models\Layer;
@@ -37,7 +37,7 @@ class DocumentServiceProvider extends ServiceProvider
 
     protected function registerConfig()
     {
-        $this->mergeConfigFrom(__DIR__.'/../Config/Config.php', 'document');
+        $this->mergeConfigFrom(__DIR__.'/../Config/Config.php', 'lsd');
     }
 
     public function registerAliases()
@@ -74,7 +74,7 @@ class DocumentServiceProvider extends ServiceProvider
 
     protected function bootViews()
     {
-        $framework = Config::get('document.view_framework');
+        $framework = Config::get('lsd.view_framework');
         $this->loadViewsFrom(__DIR__.'/../Views/'.$framework, 'lsd');
 
         Blade::directive('extract', function ($expression) {

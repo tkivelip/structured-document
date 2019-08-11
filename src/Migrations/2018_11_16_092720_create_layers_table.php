@@ -19,7 +19,7 @@ class CreateLayersTable extends Migration
             $table->string('locale', 10)->nullable();
             $table->tinyInteger('status')->default(1);
             $table->integer('position')->default(0);
-            $table->string('template', 70)->default('default');
+            $table->string('template', 70)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

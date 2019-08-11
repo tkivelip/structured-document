@@ -20,8 +20,8 @@ class CreateDocumentsTable extends Migration
             $table->string('locale', 10)->nullable();
             $table->string('slug')->nullable();
             $table->unsignedInteger('parent_id')->nullable();
-            $table->string('type', 10)->default(DocumentType::Content);
-            $table->tinyInteger('status')->default(DocumentStatus::Active);
+            $table->string('type', 10)->nullable();
+            $table->tinyInteger('status')->default(1);
             $table->integer('order')->default(0);
             $table->json('config')->nullable();
             $table->softDeletes();

@@ -17,13 +17,4 @@ trait Structurable
         return $this instanceof StructuralContainer;
     }
 
-    /**
-     * Get the template key.
-     *
-     * @return string
-     */
-    public function getTemplateKey(): string
-    {
-        return 'lsd::block.block';
-    }
 }

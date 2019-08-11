@@ -41,12 +41,31 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Layers
+    | Block configuration
     |--------------------------------------------------------------------------
     |
     */
-    'blocks' => [
-        'view_path' => 'document/block',
+    'block' => [
+        'items' => [
+            [
+                'name'     => 'card',
+                'template' => 'lsd::block.card',
+                'properties' => [
+                    [
+                        'name' => 'header',
+                        'type' => 'string',
+                    ],
+                    [
+                        'name' => 'content',
+                        'type' => 'text',
+                    ],
+                    [
+                        'name' => 'link',
+                        'type' => 'string',
+                    ],
+                ],
+            ],
+        ],
     ],
 
      /*

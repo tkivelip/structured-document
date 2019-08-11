@@ -19,11 +19,12 @@ class CreateBlocksTable extends Migration
             $table->nullableMorphs('linkable');
             $table->string('locale', 10)->nullable();
             $table->string('name', 0)->nullable();
-            $table->tinyInteger('status')->default(BlockStatus::Draft);
+            $table->string('type', 10)->nullable();
+            $table->tinyInteger('status')->default(1);
             $table->integer('position')->default(0);
             $table->string('template', 70)->default('default');
             $table->tinyInteger('heading_order')->default(1);
-            $table->string('content_type', 20)->default(ContentType::SimpleHtml);
+            $table->string('content_type', 20)->nullable();
             $table->dateTime('published_at')->useCurrent();
             $table->softDeletes();
             $table->timestamps();

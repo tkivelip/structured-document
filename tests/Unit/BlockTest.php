@@ -19,19 +19,75 @@ class BlockTest extends TestCase
     }
 
     /**
+     * @test
+     */
+    public function testRenderEmptyBlock()
+    {
+        $block = new Block();
+        $rendered = $block->render();
+
+        $this->assertEquals('lsd::block.block', $block->template);
+        $this->assertNotEmpty($rendered);
+    }
+
+    /**
      * Example test.
      *
      * @test
      */
     public function testCreateBlock()
     {
-        $block = Block::create([
+        Block::create([
             'title'   => 'Example title',
             'content' => 'Example content',
         ]);
 
+        $block = Block::first();
+
         $this->assertEquals('Example title', $block->title);
         $this->assertEquals('Example content', $block->content);
         $this->assertEquals('block', $block->structural_type);
+        $this->assertEquals('lsd::block.block', $block->template);
+    }
+
+    /**
+     * Render block test.
+     *
+     * @throws \Throwable
+     *
+     * @test
+     */
+    public function testMakeRenderBlock()
+    {
+        $block = Block::make([
+            'title'   => 'Example title',
+            'content' => 'Example content',
+        ]);
+
+        $renderedBlock = $block->render();
+
+        $this->assertEquals('lsd::block.block', $block->template);
+        $this->assertStringContainsString('Example title', $renderedBlock);
+        $this->assertStringContainsString('Example content', $renderedBlock);
+    }
+
+    /**
+     * Render block test.
+     *
+     * @test
+     */
+    public function testMakeRenderBlockCard()
+    {
+        $block = Block::make([
+            'content' => 'Example content',
+            'type'    => 'card',
+        ]);
+
+        $renderedBlock = $block->render();
+
+        $this->assertEquals('lsd::block.card', $block->template);
+        $this->assertEquals('card', $block->type);
+        $this->assertStringContainsString('class="card', $renderedBlock);
+        $this->assertStringContainsString('Example content', $renderedBlock);
     }
 }
