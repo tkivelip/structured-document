@@ -1,6 +1,3 @@
-
-@if(Lsd::isContainerable($item ?? null))
-    @include($item->getTemplateKey(), ['item'=>$item, 'items'=>$item->getChildren()])
-@elseif(Lsd::isStructurable($item ?? null))
-    @include($item->getTemplateKey(), ['item'=>$item])
+@if(Lsd::isStructurable($item ?? null))
+    @include($item->template, array_merge($item->toArray(), ['item'=>$item]))
 @endif

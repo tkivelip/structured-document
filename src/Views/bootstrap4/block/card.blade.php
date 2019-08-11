@@ -5,8 +5,8 @@
         </div>
     @endif
     <div class="card-body">
-        @if($content ?? false)
-            {{ $content }}
+        @if($slot ?? $content ?? false)
+            {{ $slot ?? $content}}
         @else
             <h5 class="card-title">{{ $title ?? '' }}</h5>
             <p class="card-text"> {{ $text ?? ''}}</p>
